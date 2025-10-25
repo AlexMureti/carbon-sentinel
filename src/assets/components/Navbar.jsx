@@ -1,25 +1,35 @@
-import React from 'react';
+import React from 'react'; // React: Core for components—no hooks needed here (pure display).
 
-function Navbar({ currentView, onChangeView }) { // Props: currentView (string like 'citizen'), onChangeView (function from App to update state).
+
+function Navbar({ currentView, onChangeView, user, onLogout, onSignInGoogle, onSignInGitHub }) { // Props: View state, user, functions.
   return (
-    <nav className="bg-green-600 text-white p-4 flex justify-between items-center"> {/* Tailwind classes: Green background, white text, padding 4, flex for horizontal layout, justify-between (space buttons), items-center (vertical align). */}
+    <nav className="bg-green-600 text-white p-4 flex justify-between items-center">
       <h1 className="text-xl font-bold">Carbon Sentinel</h1>
-      <div> {/* Wrapper div for buttons. */}
+      <div className="flex items-center space-x-2"> {/* Flex for buttons, space-x for gaps. */}
         <button
-          className={`mr-4 p-2 rounded ${currentView === 'citizen' ? 'bg-white text-green-600' : ''}`} // Tailwind: Margin-right 4, padding 2, rounded corners. Conditional: If currentView is 'citizen', add white bg + green text (active style).
-          onClick={() => onChangeView('citizen')} // onClick: Calls prop function with 'citizen'—updates App state, re-renders view.
+          className={`p-2 rounded ${currentView === 'citizen' ? 'bg-white text-green-600' : 'bg-transparent'}`}
+          onClick={() => onChangeView('citizen')} // Calls setter to change view.
         >
           Citizen View
         </button>
         <button
-          className={`p-2 rounded ${currentView === 'council' ? 'bg-white text-green-900' : ''}`} // Same as above, but for 'council' view.
-          onClick={() => onChangeView('council')} // onClick: Switches to 'council'.
+          className={`p-2 rounded ${currentView === 'council' ? 'bg-white text-green-600' : 'bg-transparent'}`}
+          onClick={() => onChangeView('council')}
         >
           Council View
         </button>
+        {/* Conditional: If user logged in, show logout; else, login buttons. */}
+        {user ? (
+          <button onClick={onLogout} className="p-2 rounded bg-red-500">Logout ({user.email})</button> // onClick: Calls logout, shows email.
+        ) : (
+          <div className="space-x-2">
+            <button onClick={onSignInGoogle} className="p-2 rounded bg-blue-500">Google</button>
+            <button onClick={onSignInGitHub} className="p-2 rounded bg-gray-800">GitHub</button>
+          </div>
+        )}
       </div>
     </nav>
   );
 }
 
-export default Navbar; 
+export default Navbar;

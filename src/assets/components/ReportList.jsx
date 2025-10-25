@@ -1,7 +1,3 @@
-// src/components/ReportList.jsx
-// ReportList: Displays a list of submitted reports (from App state).
-// Concepts: Props (receives reports array from parent App), map (loops over array to render each report as a list item), conditional rendering (show message if empty array), key (unique ID for React to track items in lists—prevents bugs on re-renders).
-
 import React from 'react'; // React: Core for components—no hooks needed here (pure display).
 
 function ReportList({ reports }) { // Props: reports (array from App state—e.g., [{id, title, description, status, ...}]).

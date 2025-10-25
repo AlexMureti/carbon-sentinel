@@ -1,14 +1,13 @@
-// src/App.jsx
-// App: Main container—state, fetches, renders views.
+
 // Concepts: useState (changing data), useEffect (after-render actions), props (down flow), conditional (if/else in JSX), Router (URL nav).
 
-import { useState, useEffect } from 'react'; // useState: Data changes. useEffect: Side effects.
-import { BrowserRouter as Router, Routes, Route } from 'react-router-dom'; // Router: Nav without reload.
-import Navbar from './assets/components/Navbar'; // Navbar: Top bar.
-import MapView from './assets/components/MapView'; // Map: Live data pins.
-import ReportForm from './assets/components/ReportForm'; // Form: Report input.
-import ReportList from './assets/components/ReportList'; // List: Display reports.
-import CouncilDashboard from './assets/components/CouncilDashboard'; // Dashboard: Council updates.
+import { useState, useEffect } from 'react'; 
+import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
+import Navbar from './assets/components/Navbar';
+import MapView from './assets/components/MapView';
+import ReportForm from './assets/components/ReportForm';
+import ReportList from './assets/components/ReportList';
+import CouncilDashboard from './assets/components/CouncilDashboard';
 
 function App() {
   const [view, setView] = useState('citizen'); // View toggle.

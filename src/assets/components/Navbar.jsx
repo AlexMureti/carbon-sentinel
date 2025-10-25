@@ -1,8 +1,4 @@
-// src/components/Navbar.jsx
-// Navbar: Top navigation bar with buttons to switch between citizen and council views.
-// Concepts: Props (receives currentView state and onChangeView setter from App), onClick (handles button clicks to update state), conditional className (Tailwind styles change based on view).
-
-import React from 'react'; // React: Core library for components.
+import React from 'react';
 
 function Navbar({ currentView, onChangeView }) { // Props: currentView (string like 'citizen'), onChangeView (function from App to update state).
   return (
@@ -16,7 +12,7 @@ function Navbar({ currentView, onChangeView }) { // Props: currentView (string l
           Citizen View
         </button>
         <button
-          className={`p-2 rounded ${currentView === 'council' ? 'bg-white text-green-600' : ''}`} // Same as above, but for 'council' view.
+          className={`p-2 rounded ${currentView === 'council' ? 'bg-white text-green-900' : ''}`} // Same as above, but for 'council' view.
           onClick={() => onChangeView('council')} // onClick: Switches to 'council'.
         >
           Council View
